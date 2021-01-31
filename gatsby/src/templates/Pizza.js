@@ -10,7 +10,6 @@ const StyledPizzaPage = styled.div`
 `;
 
 export default function SinglePizzaPage({ data: { pizza } }) {
-  console.clear();
   console.log(pizza);
   return (
     <StyledPizzaPage>

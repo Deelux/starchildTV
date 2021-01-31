@@ -73,8 +73,6 @@ export default function ToppingsFilter() {
   // Loop over this list per topping and display the topping and the count in that topping
   // Link it up...
   const toppingsWithCounts = CountPizzasInToppings(pizzas.nodes);
-  console.clear();
-  console.log(toppingsWithCounts);
 
   return (
     <ToppingsStyles>
