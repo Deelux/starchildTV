@@ -53,8 +53,9 @@ async function turnToppingsIntoPages({ graphql, actions }) {
       path: `topping/${topping.name}`,
       component: toppingTemplate,
       context: {
-        name: topping.name,
-        data,
+        topping: topping.name,
+        // TODO regex for topping
+        toppingRegex: `/${topping.name}/i`,
       },
     });
   });
