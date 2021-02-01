@@ -1,9 +1,9 @@
 import React from 'react';
 
-export default function BeersPage() {
+export default function BeersPage({ beer }) {
   return (
     <>
-      <p>I'm the beers page!</p>
+      <p>{beer}</p>
     </>
   );
 }
