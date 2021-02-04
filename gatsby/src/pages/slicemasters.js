@@ -42,6 +42,7 @@ export default function SlicemastersPage({ data }) {
   return (
     <>
       <p>I'm the slicemaster page! There are {persons.length} inputs.</p>
+      <p>{process.env.GATSBY_PAGE_SIZE}</p>
       <SlicemasterGrid>
         {persons.map((person) => (
           <StyledSlicemasters key={person.id}>
