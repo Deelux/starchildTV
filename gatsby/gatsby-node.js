@@ -93,7 +93,7 @@ async function fetchBeersAndTurnIntoNodes({
 
 async function turnSlicemastersIntoPages({ graphql, actions }) {
   // 1. Get a template for this page
-  const slicemasterTemplate = path.resolve('./src/pages/slicemasters.js');
+  const slicemasterTemplate = path.resolve('./src/templates/Slicemaster.js');
   // 2. Query all slicemasters
   const { data } = await graphql(`
     query {
@@ -109,7 +109,19 @@ async function turnSlicemastersIntoPages({ graphql, actions }) {
       }
     }
   `);
-  // TODO: 2 Tearn each slicemaster into their own page
+  // 2. Tearn each slicemaster into their own page
+  data.persons.nodes.forEach((person) => {
+    actions.createPage({
+      // What is the url for this new page?
+      path: `slicemaster/${person.slug.current}`,
+      component: slicemasterTemplate,
+      context: {
+        name: person.name,
+        slug: person.slug.current,
+      },
+    });
+  });
+
   // 3. Figure out how many pages there are and how many per page.
   const pageSize = parseInt(process.env.GATSBY_PAGE_SIZE);
   const pageCount = Math.ceil(data.persons.totalCount / pageSize);

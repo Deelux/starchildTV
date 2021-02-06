@@ -41,7 +41,6 @@ export default function SlicemastersPage({ data, pageContext }) {
   const persons = data.persons.nodes;
   return (
     <>
-      <p>I'm the slicemaster page! There are {persons.length} inputs.</p>
       <Pagination
         pageSize={parseInt(process.env.GATSBY_PAGE_SIZE)}
         totalCount={data.persons.totalCount}
