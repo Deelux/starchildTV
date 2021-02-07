@@ -1,18 +1,22 @@
 import { graphql } from 'gatsby';
 import React from 'react';
 import Img from 'gatsby-image';
+import SEO from '../components/SEO';
 
 export default function SinglePersonPage({ data: { person } }) {
   return (
-    <div className="center">
-      <Img fluid={person.image.asset.fluid} alt={person.name} />
-      <div>
-        <h2>
-          <span className="mark">{person.name}</span>
-        </h2>
-        <p>{person.description}</p>
+    <>
+      <SEO title={person.name} image={person.image.asset.src} />
+      <div className="center">
+        <Img fluid={person.image.asset.fluid} alt={person.name} />
+        <div>
+          <h2>
+            <span className="mark">{person.name}</span>
+          </h2>
+          <p>{person.description}</p>
+        </div>
       </div>
-    </div>
+    </>
   );
 }
 
