@@ -33,23 +33,30 @@ const transporter = nodemailer.createTransport({
   },
 });
 
+// function wait(ms) {
+//   return new Promise((resolve, reject) => {
+//     setTimeout(resolve, ms);
+//   });
+// }
+
 exports.handler = async (event, context) => {
+  // await wait(5000);
   const body = JSON.parse(event.body);
   console.log(body);
   // Validate the data coming in is correct
   const requireFields = ['email', 'name', 'order'];
 
-  for (const field of requireFields) {
-    console.log(`Checking that ${field} is good`);
-    if (!body[field]) {
-      return {
-        statusCode: 400,
-        body: JSON.stringify({
-          message: `Oops! You are missing the ${field} field`,
-        }),
-      };
-    }
+  if (!body.order.length) {
+    return {
+      statusCode: 400,
+      body: JSON.stringify({
+        message: `WHY would you order nothing...?`,
+      }),
+    };
   }
+
+  // Make sure they actually have items in that order
+
   // Send the email
 
   const info = await transporter.sendMail({
