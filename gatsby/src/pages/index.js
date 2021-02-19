@@ -1,4 +1,5 @@
 import React from 'react';
+import ItemGrid from '../components/ItemGrid';
 import LoadingGrid from '../components/LoadingGrid';
 import { HomePageGrid } from '../styles/Grids';
 import useLatestData from '../utils/useLatestData';
@@ -6,18 +7,28 @@ import useLatestData from '../utils/useLatestData';
 function CurrentlySlicing({ slicemasters }) {
   return (
     <div>
+      <h2 className="center">
+        <span className="mark tilt">Slicemasters on Duty</span>
+      </h2>
+      <p>Ready to cut up your pizza!</p>
       {!slicemasters && <LoadingGrid count={4} />}
       {slicemasters && !slicemasters?.length && (
         <p>No one is working right now!</p>
       )}
+      {slicemasters?.length && <ItemGrid items={slicemasters} />}
     </div>
   );
 }
 function HotSlices({ hotSlices }) {
   return (
     <div>
+      <h2 className="center">
+        <span className="mark tilt">HOT slices, ready to eat!</span>
+      </h2>
+      <p>For the the HANGRY people!</p>
       {!hotSlices && <LoadingGrid count={4} />}
       {hotSlices && !hotSlices?.length && <p>Nothing to eat here...</p>}
+      {hotSlices?.length && <ItemGrid items={hotSlices} />}
     </div>
   );
 }
