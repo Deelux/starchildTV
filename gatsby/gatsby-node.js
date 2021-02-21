@@ -89,7 +89,7 @@ async function fetchBeersAndTurnIntoNodes({
       ...beer,
       ...nodeMeta,
     });
-  });
+  }
 }
 
 async function turnSlicemastersIntoPages({ graphql, actions }) {
